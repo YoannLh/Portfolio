@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
+import Loader from '../components/Loader'
 import photo from '../assets/images/background.jpeg'
 import arrow from '../assets/images/arrow-down.svg'
 
@@ -31,7 +32,7 @@ const StyledPocketDisk = styled.div`
     width: 100px;
     height: 100px;
     background: #235789;
-    animation: 250ms 2200ms test7;
+    animation: 250ms 1750ms test7;
     animation-fill-mode: both;
     @keyframes test7 {
         from {
@@ -44,7 +45,7 @@ const StyledPocketDisk = styled.div`
 `
 
 const StyledContainerDisk = styled.div`
-    animation: 250ms 2450ms test6;
+    animation: 250ms 2000ms test6;
     animation-fill-mode: both;
     @keyframes test6 {
         from {
@@ -65,15 +66,6 @@ const StyledDisk = styled.div`
     height: 100px;
     border-radius: 50%;
     background: #f1d302;
-    animation: test8 20000ms infinite 2950ms;
-    @keyframes test8 {
-        from {
-            transform: rotate(0);
-        }
-        to {
-            transform: rotate(7200deg);
-        }
-    }
 `
 
 const StyledTextName = styled.p`
@@ -144,7 +136,7 @@ const StyledTextRemote = styled.p`
     transform: rotate(270deg);
     font-size: 3em;
     color: rgba(0, 0, 0, 0.45);
-    animation: 250ms 1750ms test4;
+    animation: 250ms 1500ms test4;
     animation-fill-mode: both;
     @keyframes test4 {
         from {
@@ -181,12 +173,12 @@ const StyledSecondSubContainer = styled.section`
 const StyledLinkContact = styled(Link)`
     position: absolute;
     top: 20px;
-    right: 5%;
+    right: 4%;
     font-size: 1.7em;
     font-weight: bold;
     color: #f46036;
     text-decoration-color: #f1d302;
-    animation: 250ms 2700ms test7;
+    animation: 250ms 2000ms test7;
     animation-fill-mode: both;
     @keyframes test7 {
         from {
@@ -209,7 +201,7 @@ const StyledLinkSecondPart = styled.section`
     height: 70px;
     border-radius: 50%;
     background: #235789;
-    animation: 250ms 2950ms test3;
+    animation: 250ms 1500ms test3;
     animation-fill-mode: both;
     @keyframes test3 {
         from {
@@ -232,6 +224,7 @@ const StyledArrowDown = styled.img`
 export default function Home() {
     return (
         <StyledContainer>
+            <Loader />
             <StyledFirstSubContainer>
                 <StyledContainerLogo>
                     <StyledContainerDisk>
