@@ -5,6 +5,7 @@ const StyledContainer = styled.section`
     display: flex;
     width: 100%;
     height: 700px;
+    background: #fdfffc;
 `
 
 const StyledText = styled.p`
