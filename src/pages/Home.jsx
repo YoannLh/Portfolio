@@ -5,24 +5,30 @@ import { Link } from 'react-router-dom'
 import Loader from '../components/Loader'
 import photo from '../assets/images/background.jpeg'
 import arrow from '../assets/images/arrow-down.svg'
+import Bio from '../sections/Bio'
+import Projects from '../sections/Projects'
 
-const StyledContainer = styled.section`
+const StyledMainContainer = styled.main`
+    display: flex;
+    flex-direction: column;
+`
+
+const StyledHeroContainer = styled.section`
     display: flex;
     width: 100%;
-    height: 700px;
+    height: 750px;
     background: #fdfffc;
 `
 
 const StyledFirstSubContainer = styled.section`
     position: relative;
     width: 50%;
-    height: 750px;
 `
 
 const StyledContainerLogo = styled.div`
     position: absolute;
     top: 30px;
-    left: 12%;
+    left: 8%;
     width: 100px;
 `
 
@@ -66,6 +72,16 @@ const StyledDisk = styled.div`
     height: 100px;
     border-radius: 50%;
     background: #f1d302;
+    animation: 250ms 2000ms test20;
+    animation-fill-mode: both;
+    @keyframes test20 {
+        from {
+            transform: rotate(0);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
 `
 
 const StyledTextName = styled.p`
@@ -113,7 +129,6 @@ const StyledTextFreelance = styled.p`
     position: absolute;
     top: 240px;
     left: 65%;
-    transform: rotate(270deg);
     font-size: 3em;
     color: rgba(0, 0, 0, 0.7);
     animation: 250ms 1500ms test3;
@@ -153,7 +168,6 @@ const StyledTextRemote = styled.p`
 const StyledSecondSubContainer = styled.section`
     position: relative;
     width: 50%;
-    height: 750px;
     background: url(${photo}) no-repeat;
     object-fit: cover;
     animation: 250ms 1000ms test5;
@@ -174,7 +188,7 @@ const StyledLinkContact = styled(Link)`
     position: absolute;
     top: 20px;
     right: 4%;
-    font-size: 1.7em;
+    font-size: 1.8em;
     font-weight: bold;
     color: #f46036;
     text-decoration-color: #f1d302;
@@ -192,7 +206,7 @@ const StyledLinkContact = styled(Link)`
     }
 `
 
-const StyledLinkSecondPart = styled.section`
+const StyledLinkSecondPart = styled.div`
     position: absolute;
     left: -35px;
     bottom: 55px;
@@ -214,7 +228,7 @@ const StyledLinkSecondPart = styled.section`
     }
 `
 
-const StyledArrowDown = styled.img`
+const StyledLinkArrowDown = styled.a`
     height: 55px;
     transform: rotate(90deg);
     color: white !important;
@@ -223,40 +237,55 @@ const StyledArrowDown = styled.img`
 
 export default function Home() {
     return (
-        <StyledContainer>
-            <Loader />
-            <StyledFirstSubContainer>
-                <StyledContainerLogo>
-                    <StyledContainerDisk>
-                        <StyledDisk>
-                            <p
-                                style={{
-                                    position: 'relative',
-                                    top: '-3px',
-                                    margin: 'auto',
-                                    color: 'white',
-                                    fontSize: '2.3em',
-                                    fontWeight: 'bold',
-                                    transform: 'rotate(-20deg)',
-                                }}
-                            >
-                                @
-                            </p>
-                        </StyledDisk>
-                    </StyledContainerDisk>
-                    <StyledPocketDisk />
-                </StyledContainerLogo>
-                <StyledTextName>YOANN L'HOSTIS</StyledTextName>
-                <StyledTextJob>Développeur Front-End</StyledTextJob>
-                <StyledTextFreelance>Freelance</StyledTextFreelance>
-                <StyledTextRemote>Remote</StyledTextRemote>
-            </StyledFirstSubContainer>
-            <StyledSecondSubContainer>
-                <StyledLinkContact to="/contact">contact</StyledLinkContact>
-                <StyledLinkSecondPart>
-                    <StyledArrowDown src={arrow} alt="arrow down" />
-                </StyledLinkSecondPart>
-            </StyledSecondSubContainer>
-        </StyledContainer>
+        <StyledMainContainer>
+            <div id="up"></div>
+            <StyledHeroContainer>
+                <Loader />
+                <StyledFirstSubContainer>
+                    <StyledContainerLogo id="logo">
+                        <StyledContainerDisk>
+                            <StyledDisk>
+                                <p
+                                    style={{
+                                        position: 'relative',
+                                        top: '-3px',
+                                        margin: 'auto',
+                                        color: 'white',
+                                        fontSize: '2.3em',
+                                        fontWeight: 'bold',
+                                        transform: 'rotate(-20deg)',
+                                    }}
+                                >
+                                    @
+                                </p>
+                            </StyledDisk>
+                        </StyledContainerDisk>
+                        <StyledPocketDisk />
+                    </StyledContainerLogo>
+                    <StyledTextName>YOANN L'HOSTIS</StyledTextName>
+                    <StyledTextJob>
+                        Développeur Web
+                        <br />
+                        Javascript React
+                    </StyledTextJob>
+                    <StyledTextFreelance>Freelance</StyledTextFreelance>
+                    <StyledTextRemote>Remote</StyledTextRemote>
+                </StyledFirstSubContainer>
+                <StyledSecondSubContainer>
+                    <StyledLinkContact to="/contact">contact</StyledLinkContact>
+                    <StyledLinkSecondPart>
+                        <StyledLinkArrowDown href="/#bio">
+                            <img
+                                style={{ height: '60px' }}
+                                src={arrow}
+                                alt="arrow down"
+                            />
+                        </StyledLinkArrowDown>
+                    </StyledLinkSecondPart>
+                </StyledSecondSubContainer>
+            </StyledHeroContainer>
+            <Bio />
+            <Projects />
+        </StyledMainContainer>
     )
 }
