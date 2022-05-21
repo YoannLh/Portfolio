@@ -14,17 +14,17 @@ const StyledFirstSubContainer = styled.section`
     position: relative;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
     width: 50%;
-    background: #235789;
 `
 
 const StyledSecondSubContainer = styled.section`
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
     width: 50%;
+    background: #f46036;
 `
 
 const StyledLinkSecondPart = styled.div`
@@ -35,107 +35,32 @@ const StyledLinkSecondPart = styled.div`
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    background: #f46036;
+    background: #f1d302;
 `
 
-const StyledLinkArrowDown = styled.a`
+const StyledLinkArrowUp = styled.a`
     height: 55px;
+    transform: rotate(180deg);
     color: white !important;
     margin: auto;
 `
 
-export default function Bio() {
+export default function Projects() {
     const { toggleTheme, theme } = useContext(ThemeContext)
     return (
         <StyledMain>
-            <StyledFirstSubContainer>
-                <h2
-                    style={{
-                        margin: '30px auto 20px auto',
-                        color: 'white',
-                        fontSize: '1.3em',
-                        textDecoration: 'underline',
-                        textDecorationColor: '#f1d302',
-                    }}
-                >
-                    Je suis ?
-                </h2>
-                <p
-                    style={{
-                        width: '75%',
-                        margin: '30px auto',
-                        textAlign: 'center',
-                        color: 'white',
-                        fontSize: '1.3em',
-                    }}
-                >
-                    Je suis un développeur web, plutôt orienté front-end. Avant,
-                    j'étais régisseur lumière dans le spectacle. Concrètement,
-                    je peux recoder facebook (je ne vous cache pas que ça va
-                    prendre un peu de temps), mais je suis plutôt orienté
-                    "visuel", UI / UX, algorithmique... #pointilleux
-                </p>
-                <h2
-                    style={{
-                        margin: '30px auto 20px auto',
-                        color: 'white',
-                        fontSize: '1.3em',
-                        textDecoration: 'underline',
-                        textDecorationColor: '#f1d302',
-                    }}
-                >
-                    J'ai déjà fait quoi ?
-                </h2>
-                <p
-                    style={{
-                        width: '75%',
-                        margin: '30px auto',
-                        textAlign: 'center',
-                        color: 'white',
-                        fontSize: '1.3em',
-                    }}
-                >
-                    J'ai travaillé pour des négociants en vins dans la région
-                    bordelaise, des professionnels de la santé, un restaurant,
-                    des vendeurs de mobiliers...
-                </p>
-                <h2
-                    style={{
-                        margin: '30px auto 20px auto',
-                        color: 'white',
-                        fontSize: '1.3em',
-                        textDecoration: 'underline',
-                        textDecorationColor: '#f1d302',
-                    }}
-                >
-                    Vous avez un projet web ?
-                </h2>
-                <p
-                    style={{
-                        width: '75%',
-                        margin: '30px auto',
-                        textAlign: 'center',
-                        color: 'white',
-                        fontSize: '1.3em',
-                    }}
-                >
-                    Contactez-moi :) On va analyser ensemble votre projet pour
-                    déterminer si je suis le professionnel adéquat (en terme de
-                    technologies) pour vous accompagner dans son développement.
-                </p>
-            </StyledFirstSubContainer>
-            <StyledSecondSubContainer
+            <StyledFirstSubContainer
                 style={{
                     background: theme === 'light' ? '#fdfffc' : '#020100',
                 }}
             >
-                <div
+                {/* <div
                     style={{
                         width: '100px',
                         height: '100px',
                         backgroundColor: '#F1D302',
                     }}
-                ></div>
+                ></div> */}
                 <div
                     style={{
                         width: '100px',
@@ -143,24 +68,98 @@ export default function Bio() {
                         backgroundColor: '#020100',
                     }}
                 ></div>
-                {/* <div
+                <div
                     style={{
                         width: '100px',
                         height: '100px',
-                        backgroundColor: '#F46036',
+                        backgroundColor: '#235789',
                     }}
-                ></div> */}
+                ></div>
+            </StyledFirstSubContainer>
+            <StyledSecondSubContainer>
+                <h2
+                    style={{
+                        margin: '30px auto 20px auto',
+                        color: 'white',
+                        fontSize: '1.3em',
+                        textDecoration: 'underline',
+                        textDecorationColor: '#f1d302',
+                    }}
+                >
+                    Je maitrise quelles technos ?
+                </h2>
+                <p
+                    style={{
+                        width: '75%',
+                        margin: '30px auto',
+                        textAlign: 'center',
+                        color: 'white',
+                        fontSize: '1.3em',
+                    }}
+                >
+                    Je travaille principalement avec Javascript. Pourquoi ?
+                    Parce que c'est le langage du Web tout simplement. De nos
+                    jous, on crée des serveurs, des applications Web et mobile
+                    avec Javascript et ses librairies. Qui dit mieux ?
+                </p>
+                <h2
+                    style={{
+                        margin: '30px auto 20px auto',
+                        color: 'white',
+                        fontSize: '1.3em',
+                        textDecoration: 'underline',
+                        textDecorationColor: '#f1d302',
+                    }}
+                >
+                    Outils ?
+                </h2>
+                <p
+                    style={{
+                        width: '75%',
+                        margin: '30px auto',
+                        textAlign: 'center',
+                        color: 'white',
+                        fontSize: '1.3em',
+                    }}
+                >
+                    Ils sont nombreux ! Trello, Figma, Postman, VSC, Git, Git
+                    Kraken, Github... Ces outils servent à améliorer la
+                    productuvité et le rendement
+                </p>
+                <h2
+                    style={{
+                        margin: '30px auto 20px auto',
+                        color: 'white',
+                        fontSize: '1.3em',
+                        textDecoration: 'underline',
+                        textDecorationColor: '#f1d302',
+                    }}
+                >
+                    Méthodologies ?
+                </h2>
+                <p
+                    style={{
+                        width: '75%',
+                        margin: '30px auto',
+                        textAlign: 'center',
+                        color: 'white',
+                        fontSize: '1.3em',
+                    }}
+                >
+                    Agilité, TDD, BDD, DDD... Je vous encourage à lire le
+                    lexique pour en apprendre plus ;)
+                </p>
                 <StyledLinkSecondPart>
-                    <StyledLinkArrowDown href="/#down">
+                    <StyledLinkArrowUp href="/#up">
                         <img
                             style={{ height: '60px' }}
                             src={arrow}
-                            alt="arrow down"
+                            alt="arrow up"
                         />
-                    </StyledLinkArrowDown>
+                    </StyledLinkArrowUp>
                 </StyledLinkSecondPart>
             </StyledSecondSubContainer>
-            <div id="bio"></div>
+            <div id="down"></div>
         </StyledMain>
     )
 }

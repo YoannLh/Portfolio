@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import styled from 'styled-components'
+
+import { ThemeContext } from '../context/Context'
 
 const StyledLoader = styled.div`
     display: flex;
@@ -46,8 +48,20 @@ const StyledBigCircle = styled.div`
 `
 
 function Loader() {
+    const { toggleTheme, theme } = useContext(ThemeContext)
+    const [themeLoader, setThemeLoader] = useState(
+        localStorage.getItem('theme')
+    )
+    useEffect(() => {
+        if (!localStorage.getItem('theme')) return
+        setThemeLoader(localStorage.getItem('theme'))
+    }, [theme])
     return (
-        <StyledLoader>
+        <StyledLoader
+            style={{
+                background: theme === 'light' ? '#fdfffc' : '#020100',
+            }}
+        >
             <StyledBigCircle></StyledBigCircle>
         </StyledLoader>
     )

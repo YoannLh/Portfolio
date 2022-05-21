@@ -1,12 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-import Loader from '../components/Loader'
 import photo from '../assets/images/background.jpeg'
 import arrow from '../assets/images/arrow-down.svg'
+import moon from '../assets/images/moon.svg'
+import sun from '../assets/images/sun.svg'
+
+import Loader from '../components/Loader'
 import Bio from '../sections/Bio'
-import Projects from '../sections/Projects'
+import Technos from '../sections/Technos'
+import { ThemeContext } from '../context/Context'
 
 const StyledMainContainer = styled.main`
     display: flex;
@@ -17,7 +21,6 @@ const StyledHeroContainer = styled.section`
     display: flex;
     width: 100%;
     height: 750px;
-    background: #fdfffc;
 `
 
 const StyledFirstSubContainer = styled.section`
@@ -60,7 +63,7 @@ const StyledContainerDisk = styled.div`
         }
         to {
             opacity: 1;
-            transform: translate(75px);
+            transform: translate(80px);
         }
     }
 `
@@ -236,10 +239,19 @@ const StyledLinkArrowDown = styled.a`
 `
 
 export default function Home() {
+    const { toggleTheme, theme } = useContext(ThemeContext)
+    function handleChangeTheme() {
+        toggleTheme()
+        localStorage.setItem('theme', theme === 'light' ? 'dark' : 'light')
+    }
     return (
         <StyledMainContainer>
             <div id="up"></div>
-            <StyledHeroContainer>
+            <StyledHeroContainer
+                style={{
+                    background: theme === 'light' ? '#fdfffc' : '#020100',
+                }}
+            >
                 <Loader />
                 <StyledFirstSubContainer>
                     <StyledContainerLogo id="logo">
@@ -262,16 +274,65 @@ export default function Home() {
                         </StyledContainerDisk>
                         <StyledPocketDisk />
                     </StyledContainerLogo>
-                    <StyledTextName>YOANN L'HOSTIS</StyledTextName>
+                    <StyledTextName
+                        style={{
+                            color: theme === 'light' ? '#020100' : '#fdfffc',
+                        }}
+                    >
+                        YOANN L'HOSTIS
+                    </StyledTextName>
                     <StyledTextJob>
-                        Développeur Web
+                        Développeur d'Application
                         <br />
                         Javascript React
                     </StyledTextJob>
-                    <StyledTextFreelance>Freelance</StyledTextFreelance>
-                    <StyledTextRemote>Remote</StyledTextRemote>
+                    <StyledTextFreelance
+                        style={{
+                            color:
+                                theme === 'light'
+                                    ? 'rgba(0, 0, 0, 0.7)'
+                                    : '#fdfffc',
+                        }}
+                    >
+                        Freelance
+                    </StyledTextFreelance>
+                    <StyledTextRemote
+                        style={{
+                            color:
+                                theme === 'light'
+                                    ? 'rgba(0, 0, 0, 0.45)'
+                                    : '#fdfffc',
+                        }}
+                    >
+                        Remote
+                    </StyledTextRemote>
                 </StyledFirstSubContainer>
                 <StyledSecondSubContainer>
+                    <div
+                        style={{
+                            position: 'absolute',
+                            top: '30px',
+                            left: '-8%',
+                            display: 'flex',
+                            width: '15%',
+                            height: '20px',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            color: theme === 'light' ? '#020100' : '#fdfffc',
+                        }}
+                    >
+                        <img
+                            style={{
+                                height: '20px',
+                                fill: theme === 'light' ? '#020100' : '#fdfffc',
+                            }}
+                            src={theme === 'light' ? moon : sun}
+                            alt="moon icon"
+                            onClick={() => handleChangeTheme()}
+                        />
+                        <p>EN</p>
+                        <p>FR</p>
+                    </div>
                     <StyledLinkContact to="/contact">contact</StyledLinkContact>
                     <StyledLinkSecondPart>
                         <StyledLinkArrowDown href="/#bio">
@@ -285,7 +346,7 @@ export default function Home() {
                 </StyledSecondSubContainer>
             </StyledHeroContainer>
             <Bio />
-            <Projects />
+            <Technos />
         </StyledMainContainer>
     )
 }

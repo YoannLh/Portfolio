@@ -5,17 +5,22 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './index.css'
 import reportWebVitals from './reportWebVitals'
 import Home from './pages/Home'
+import Lexique from './pages/Lexique'
 import Contact from './pages/Contact'
 import Error from './pages/Error'
+import { ThemeProvider } from './context/Context'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
     <BrowserRouter>
-        <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="*" element={<Error />} />
-        </Routes>
+        <ThemeProvider>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/lexique" element={<Lexique />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="*" element={<Error />} />
+            </Routes>
+        </ThemeProvider>
     </BrowserRouter>
 )
 
